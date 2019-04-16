@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+		<title>Oppimistehtävä 2b</title>
+        <style>
+            h1{
+                text-align: center;
+            }
+            #content{
+                margin-left: auto;
+                margin-right: auto;
+                width:500px;
+                height:400px;
+                border:1px solid black;
+                background-color: #c4ebed;
+
+            }
+            #tankki1, #tankki2, #tankki3{
+                width: 100px;
+                height: 70px;
+                margin-left: auto;
+                margin-right: auto;
+                border:1px solid black;
+                background-color:cornsilk;
+                position: relative;
+                margin: 10px;
+                display: inline-block;
+                text-align: center;
+            }
+            input, select{
+                margin:5px;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <h1>ÖLJYTANKKERI 2000</h1>
+        <div id="content">
+            Öljyä siirretään (t):<input id="oljy"/> <br/>
+            Mistä tankista siirretään:
+            <select id="tankista">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            </select><br/>
+            Mihin tankkiin siirretään:
+            <select id="tankkiin">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            </select><br/><br/>
+            <button type="button" onclick="lisaaOljya();">Siirrä</button>
+            <br/><br/>
+            1<div id="tankki1"></div>
+            2<div id="tankki2"></div>
+            3<div id="tankki3"></div>
+            <br/><br/>
+            <div id="palaute"></div>
+        </div>
+        
+        <script>
+            //globaalit muuttujat jokaiselle tankille, kaikissa lähtöarvo 10 000 tonnia
+            var t1 = 10000;
+            var t2 = 10000;
+            var t3 = 10000;
+            //tyhjä lähtöarvo palaute-diville
+            var palaute = "";
+            //funktio siirtää öljyä valitusta tankista toiseen käyttäjän määrittämän määrän tankin kapasiteetin rajoissa
+            function lisaaOljya(){
+                //tyhjennetään palaute-osio
+                document.getElementById("palaute").innerHTML = ""; 
+                //muuttuja siirrettävän öljyn määrälle
+                var siirto = Number(document.getElementById("oljy").value);
+                //mistä tankista siirretään
+                var mista = document.getElementById("tankista").value;	
+                //mihin tankkiin siirretään
+                var mihin = document.getElementById("tankkiin").value;	
+                
+                //tutkitaan mistä mihin tankkiin halutaan siirtää, toteutetaan sen mukainen if-lause, käydään läpi kaikki siirtovaihtoehdot
+                if(mista == 1 && mihin == 2){
+                    console.log(siirto);
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t1 || (t2 + siirto) <= 20000){
+                        t1 = t1 - siirto;
+                        t2 = t2 + siirto;
+                
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                        }
+                    else if (siirto > t1 || (t2 + siirto) > 20000){
+                        palaute = "Siirto ei ole mahdollinen!";
+                    }
+                }
+                //siirto tankista 1 tankkiin 3
+                if(mista == 1 && mihin == 3){
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t1 || (t3 + siirto) <= 20000){
+                        t1 = t1 - siirto;
+                        t3 = t3 + siirto;
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                    }
+                    else if (siirto > t1 || (t3 + siirto) > 20000){
+                        palaute = "Siirto ei ole mahdollinen!";
+                    }
+                }
+                //siirto tankista 2 tankkiin 1
+                if(mista == 2 && mihin == 1){
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t2 || (t1 + siirto) <= 20000){
+                        t2 = t2 - siirto;
+                        t1 = t1 + siirto;
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                    }
+                    else  if (siirto > t2 || (t1 + siirto) > 20000){
+                        palaute = "Siirto ei ole mahdollinen!";
+                    }
+                }
+                //siirto tankista 2 tankkiin 3
+                if(mista == 2 && mihin == 3){
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t2 || (t3 + siirto) <= 20000){
+                        t2 = t2 - siirto;
+                        t3 = t3 + siirto;
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                    }
+                    else  if (siirto > t2 || (t3 + siirto) > 20000){
+                       palaute = "Siirto ei ole mahdollinen!"; 
+                    }
+                }
+                //siirto tankista 3 tankkiin 1
+                if(mista == 3 && mihin == 1){
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t3 || (t1 + siirto) <= 20000){
+                        t3= t3 - siirto;
+                        t1 = t1 + siirto;
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                       }
+                    else  if (siirto > t3 || (t1 + siirto) > 20000){
+                       palaute = "Siirto ei ole mahdollinen!"; 
+                    }
+                    
+                }
+                //siirto tankista 3 tankkiin 2
+                if(mista == 3 && mihin == 2){
+                    //tutkitaan onko siirto mahdollinen
+                    if(siirto <= t3 || (t2 + siirto) <= 20000){
+                        t3 = t3 - siirto;
+                        t2 = t2 + siirto;
+                        palaute = "Siirretty " + siirto + " tonnia!";
+                    }
+                     else  if (siirto > t3 || (t2 + siirto) > 20000){
+                       palaute = "Siirto ei ole mahdollinen!";
+                        
+                    }
+                }
+                
+                
+                
+                //tulostetaan öljyn määrä diviin
+                document.getElementById("tankki1").innerHTML = t1;
+                document.getElementById("tankki2").innerHTML = t2;
+                document.getElementById("tankki3").innerHTML = t3;
+                //tulostetaan palaute käyttäjälle
+                document.getElementById("palaute").innerHTML = palaute;
+               //tyhjennetään öljy-kenttä ja viedään kursori siihen uutta siirtoa varten
+                document.getElementById("oljy").value = "";
+                document.getElementById("oljy").focus();
+            }
+            
+        </script>
+    </body>
+</html>

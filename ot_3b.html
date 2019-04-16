@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+	   <title>Oppimistehtävä 3b</title>
+        <style>
+            h2{
+                text-align: center;
+                font-family: sans-serif;
+            }
+            input{
+                width:75px;
+            }
+            #content{
+                margin-left: auto;
+                margin-right: auto;
+                width: 300px;
+                height:400px;
+                border: 1px solid black;
+                background-color: lightgray;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+        <h2>Neliölaskin</h2><br/><br/>
+        Anna luku: <input id="luku"><br/><br/><br/>
+        <!-- Buttonin painaminen kutsuu funktion tulostaNelio()-->
+        <button type="button" onclick="tulostaNelio();"><b>Laske</b></button><br/><br/><br/>
+        Luvun neliö:<div id="textbox"></div>
+        </div>
+        <script>
+            //funktio tulostaa annetun luvun neliön
+            function tulostaNelio(){
+                var luku = document.getElementById("luku").value;
+                //kutsutaan laskeNelio()-funktiota, joka laskee ja palauttaa luvun neliön. Funktiolle viedään yllä määritetty muuttuja "luku"
+                var tulos = laskeNelio(luku);
+                //tulostetaan diviin
+                document.getElementById("textbox").innerHTML = tulos;
+            }
+            //funktio laskee luvun neliön, sille viedään luku y(luku)
+            function laskeNelio(y){
+                //lasketaan luvun neliö ja palautetaan se
+                var nelio = y * y;
+                return nelio;
+            }
+        </script>
+    </body>
+</html>

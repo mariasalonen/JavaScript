@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Oppismistehtävä 2c</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            Nimesi: <br/><input id="nimi"/><br/><br/>
+            Montako kertaa tulostetaan: <br/><input id="kerrat"/><br/><br/>
+            <!-- painike kutsuu tulosta()-funktiota-->
+            <button type="button" onclick="tulosta();">Tulosta</button>
+            <p id="textbox"></p>
+        </div>
+        
+        <script>
+            //funktio alkaa
+            function tulosta(){
+                //nimi-muuttujalle otetaan käyttäjän nimi-kenttään syöttämä arvo
+                var nimi = document.getElementById("nimi").value;
+                //kerrat-kentästä otetaan arvo muuttujalle, joka määrittää montako kertaa for-luuppia pyöritetään
+                var lkm = document.getElementById("kerrat").value;
+                //for-rakenne: toistetaan niin kauan kuin i on pienempi käyttäjän syöttämä luku
+                for (var i = 0; i < lkm; i++) {
+                    //tulostetaan käyttäjän syöttämä nimi diviin, ja uudella kierroksella lisätään nimi edellisen tulosteen perään + rivinvaihto
+                    document.getElementById("textbox").innerHTML += nimi + "<br/>";
+                }
+                
+            }
+        
+        </script>
+    </body>
+</html>

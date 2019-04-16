@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+	   <title>Oppimistehtävä 3a</title>
+    </head>
+    <body>
+        <div id="textbox"></div>
+        <script>
+            var kaupungit = ["Jyväskylä","Oulu","Turku","Espoo","Vaasa"];
+            
+            //poistetaan Vaasa taulukosta; pop() pudottaa pois taulukon viimeisen arvon
+            kaupungit.pop();
+            //lisätään taulukon loppuun Mikkeli
+            kaupungit.push("Mikkeli");
+            
+            //Muutetaan taulukon ensimmäiseen paikkaan Jyväskylän tilalle Tampere
+            kaupungit[0] = "Tampere";
+            
+            //alustetaan muuttuja johon lisätään taulukon alkiot
+            var text = "";
+            //käydään läpi jokainen taulukon paikka, ja lisätään se muuttujaan text
+            for(i = 0;i < kaupungit.length; i++){
+			text += kaupungit[i] + "<br/>"; 
+            }
+            //tulostetaan taulukon alkiot textbox-diviin
+            document.getElementById("textbox").innerHTML = text + "<br/>"; 
+        </script>
+    </body>
+</html>

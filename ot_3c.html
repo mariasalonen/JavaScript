@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+	   <title>Oppimistehtävä 3c</title>
+        <style>
+            h2{
+                text-align: center;
+                font-family: sans-serif;
+            }
+            input{
+                width:75px;
+            }
+            #content{
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+                height:250px;
+                border: 1px solid black;
+                background-color: orange;
+                color:white;
+                text-align: center;
+            }
+            #textbox{
+                margin-left: auto;
+                margin-right: auto;
+                height:20px;
+                width: 75px;
+                color: black;
+                border: 1px solid black;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+        <h2>Postinumero</h2><br/><br/>
+        <b>Syötä postinumero: </b><input id="nro"><br/><br/>
+        <!-- Buttonin painaminen kutsuu funktion tulostaPostinro()-->
+        <button type="button" onclick="tulostaPostinro();"><b>Tarkista</b></button><br/><br/>
+        <div id="textbox"></div>
+        </div>
+        <script>
+            //funktio tulostaa postinumeron
+            function tulostaPostinro(){
+                //haetaan käyttäjän syöttämä numero muuttujan arvoksi
+                var nro = document.getElementById("nro").value;
+                //uusi muuttuja, jonka arvo on nro-muuttujan pituus
+                var nropituus = nro.toString().length;
+                console.log(nropituus);
+                //kutsutaan funktio, joka tarkastaa onko postinumeron pituus 5 merkkiä, ja palauttaa sen mukaan joko true- tai false-arvon
+                tarkastaPostinro(nropituus);
+            }
+            //funktio tarkistaa onko sille viedyn merkkijonon pituus 5, ja palauttaa sen mukaisen boolean-arvon (true tai false) diviin
+            function tarkastaPostinro(y){
+                console.log(Boolean(y == 5));
+                //funktio palauttaa boolean-arvon suoraan diviin
+                document.getElementById("textbox").innerHTML = Boolean(y == 5);
+            }
+        </script>
+    </body>
+</html>

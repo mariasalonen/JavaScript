@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Oppimistehtävä 4b</title>
+    </head>
+    <!--Kun body ladataan, kutsutaan funktiota "animaatio" -->
+    <body onload = "animaatio();">
+        <img id="kuva" src="kuvat/redlight.png">
+        
+        <script>
+            //globaalit muuttujat
+            var t;
+            var kelt = "kuvat/yellowlight.png"
+            var vihr = "kuvat/greenlight.png";
+            var keltpun = "kuvat/redyellow.png";
+            var pun = "kuvat/redlight.png";
+            //funktio kutsuu ajastettuna funktioita, jotka vaihtavat kuvan tietyn liikennevalon väriseksi
+            function animaatio(){
+                // lisätään aikaa aina edelliseen timeoutiin kun kutsutaan seuraavana vuorossa oleva kuva siten, että keltainen ja punakeltainen näkyvät lyhyimmän ajan (1s)
+                setTimeout(naytaKelt, 5000);
+                setTimeout(naytaVihr, 6000);
+                setTimeout(naytaKeltPun, 11000);
+                setTimeout(naytaPun, 12000);
+                //kutsutaan sama funktio uudelleen kun kaikki valot on käyty läpi
+                t = setTimeout("animaatio()",13500);
+            }
+            //funktio vaihtaa kuvaelementtiin keltaisen liikennevalon kuvan
+            function naytaKelt(){
+                var kuva = document.getElementById("kuva");
+                kuva.src = kelt;
+            }
+            //funktio vaihtaa kuvaelementtiin vihreän liikennevalon kuvan
+            function naytaVihr(){
+                var kuva = document.getElementById("kuva");
+                kuva.src = vihr;
+            }
+            //funktio vaihtaa kuvaelementtiin keltapunaisen liikennevalon kuvan
+            function naytaKeltPun(){
+                var kuva = document.getElementById("kuva");
+                kuva.src = keltpun;
+            }
+            //funktio vaihtaa kuvaelementtiin punaisen liikennevalon kuvan
+            function naytaPun(){
+                var kuva = document.getElementById("kuva");
+                kuva.src = pun;
+            }
+        
+        </script>
+    </body>
+</html>

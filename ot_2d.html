@@ -1,0 +1,101 @@
+<!-- Tee ohjelma Helsinki-Pietari välisen Allegro –junan lipun hinnan määrittämistä varten. Matkalipun hinta määräytyy siten, että ensimmäisen luokan menolippu maksaa 140,61 euroa, toisen luokan menolippu puolestaan 86,10 euroa. Meno-paluu –lippujen hinnat ovat kaksi kertaa menolipun hinta.
+
+ Opiskelijat ja eläkeläiset saavat toisen luokan liput puoleen hintaan. Lisäksi asiakkaan pitäisi voida ostaa kerralla monta samanlaista lippua.
+
+Syöttötietoina annetaan siis matkustusluokka, matkustajien lukumäärä ja yhden vai kahdensuuntainen matka sekä tieto mahdollisesta alennuksesta. Tietojen syöttö pitäisi olla käyttäjälle mahdollisimman helppo. Tulostietona ohjelma tulostaa lippuostoksen kokonaishinnan.
+
+Lomake-esimerkki ohjelmasta voit katsoa mallia.-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Oppimistehtävä 2d</title>
+        <style>
+            h2{
+                
+                color: white;
+                text-transform: uppercase;
+                font-family: sans-serif;
+            }
+            #content{
+                margin-left: auto;
+                margin-right: auto;
+                width:250px;
+                height:400px;
+                padding-left: 30px;
+                border:1px solid black;
+                background-color:lightgreen;
+                font-family: sans-serif;
+                line-height: 1.3;
+            }
+            
+            input, button, select{
+                float:right;
+                margin-right: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+        <h2>Lippuautomaatti</h2>
+            2. Luokka: <input type="radio"  name="hinta" id="kakkoslk"><br/>
+            1. Luokka: <input type="radio"  name="hinta" id="ykkoslk"><br/><br/>
+            Meno: <input type="radio"  name="suunta" id="meno"><br/>
+            Meno-Paluu: <input type="radio"  name="suunta" id="menopaluu"><br/><br/>
+            Alennus: <input type="checkbox" id="alennus"><br/><br/>
+            Lippuja (kpl): <select id="kpl">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        
+            </select><br/><br/>
+            <button type="button" onclick="osta();">OSTA</button><br/><br/>
+            <div id="yhteensa"></div>
+        </div>
+        <script>
+            var yhteensa = "";
+            function osta(){
+                //muuttujat lippujen hinnoille ja määrälle
+                console.log("funktio");
+                var hinta = 0;
+                var lippuja = document.getElementById("kpl").value;
+                //takastellaan mitkä valinnat on tehty, ja muutetaan hinta-muuttujaa sen mukaan
+                //määritetään kakkosluokan lipun hinta
+                if(document.getElementById("kakkoslk").checked){
+                    hinta = 86.10;
+                }
+                //ykkösluokan valitseminen muuttaa hintaa
+                if(document.getElementById("ykkoslk").checked){
+                    hinta = 140.61;
+                }
+                //menopaluun valinta kaksinkertaistaa hinnan
+                if(document.getElementById("menopaluu").checked){
+                    hinta = hinta * 2;
+                }
+                //tutkitaan onko asiakas valinnut alennuslipun
+                if(document.getElementById("alennus").checked){
+                    //koska alen saa vain kakkosluokan lipusta, tarkastetaan onko valittu lippu kakkosluokkaa ja sitten puolitetaan hinta
+                    if(document.getElementById("kakkoslk").checked){
+                    hinta = hinta / 2;
+                    console.log("alennus");
+                    }
+                    else{
+                        console.log("ei alennusta");
+                    }
+                }
+                //kerrotaan yhden lipun hinta valittujen lippujen määrällä    
+                var yhteishinta = hinta * lippuja;
+                //tulostetaan yhteishinta diviin
+                document.getElementById("yhteensa").innerHTML = "<b>Hinta yhteensä: </b>" + yhteishinta + " euroa";
+            }
+        </script>
+    </body>
+</html>

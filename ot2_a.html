@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+ <!--   Tee ohjelma, jolle annetaan syöttötietona opiskelijan arvosana numerona väliltä 0 – 5. Ohjelman pitäisi tulostaa numeroa vastaava arvosana sanallisena. 
+
+Mikäli käyttäjä antaa liian suuren tai liian pienen numeron, tulostetaan viesti ”Anna numero väliltä 0-5”.  Vastaavuudet ovat seuraavat:
+
+ 0 = Hylätty
+
+1-2  = Tyydyttävä
+
+3-4 = Hyvä
+
+5 = Kiitettävä-->
+    <head>
+        <meta charset="utf-8"/>
+        <title>Oppimistehtävä 2a</title>
+    </head>
+    <body>
+        Anna arvosana:
+        <!--input-kenttään syötetään numeerinen arvosana-->
+        <input id="numero"/><br/>
+        <!--painike kutsuu funktiota, joka ilmoittaa numeroa vastaavan arvosanan kirjallisena-->
+        <button type="button" onclick="laskeArvosana();">Arvosana</button><br/>
+        <!--diviin ladataan sanallinen arvosana-->
+        <div id="textbox"></div>
+        <script>
+            //funktio tarkastaa minkä numeron käyttäjä syöttää
+            function laskeArvosana() {
+                //tyhjä muuttuja, jolle annetaan myöhemmin sanallisen arvosanan arvo
+                var arvosana = "";
+                //numeeriselle arvosanalle haetaan arvo input-kentästä
+                var numero = document.getElementById("numero").value; 
+                //tutkitaan, onko annettu arvo numero ja onko annettu edes yksi numero, jos ei, pyydetään kokonaislukua
+                if(isNaN(numero) || numero.length < 1){
+                    arvosana="Anna kokonaisluku"
+                }
+                //tutkitaan onko luku välillä pienempi kuin 0 tai suurempi kuin 5
+                else if (numero < 0 || numero > 5){
+                    arvosana ="Anna numero väliltä 0-5"
+                }
+                //jos numero on 0, annetaan arvosana-muuttujalle arvo Hylätty
+                else if(numero == 0){
+                    arvosana="Hylätty"
+                }
+                //jos numero on 1 tai 2, annetaan arvosana-muuttujalle arvo Tyydyttävä
+                else if(numero == 1 || numero == 2){
+                    arvosana="Tyydyttävä"
+                }
+                //jos numero on 3 tai 4, annetaan arvosana-muuttujalle arvo Hyvä
+                else if(numero == 3 || numero == 4){
+                    arvosana="Hyvä"
+                }
+                //jos numero on 5, annetaan arvosana-muuttujalle arvo Kiitettävä
+                else if(numero == 5){
+                    arvosana="Kiitettävä"
+                }
+                
+                //ladataan muuttujan "arvosana" arvo diviin
+                document.getElementById("textbox").innerHTML = arvosana;
+
+            }
+        
+        </script>
+    
+    </body>
+</html>

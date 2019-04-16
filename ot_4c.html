@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Oppimistehtävä 4c</title>
+        <style>
+            #pallo{
+                background: pink;
+                width: 150px;
+                height: 150px;
+                border-radius: 150px;
+                position: absolute;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body onload="init();">
+        <div id="pallo"></div>
+        <script>
+            //globaalit muuttujat pallon positiolle ja liikkeen nopeudelle(montako pikseliä liikkuu kerrallaan)
+            var x_sijainti = 0;
+            var y_sijainti = 0;
+            var speed = 5;
+            //määritetään minimi- ja maksimiarvot y- ja x-akselille
+            var xMin = 0;
+            var yMin = 0;
+            var xMax = 400;
+            var yMax = 400;
+            
+            function pelaa(evt){
+                
+                x_sijainti = parseInt(pallo.style.left);
+                pallo.style.left =  x_sijainti + 'px';
+                y_sijainti = parseInt(pallo.style.top);
+                pallo.style.top =  y_sijainti + 'px';
+        
+                //posLeft > xMax || posLeft < xMin
+                //nuoli vasemmalle liikuttaa palloa speed-muuttujan verran vasemmalle iin kauan kun pallon sijainti x-akselilla on suurempi kuin 0
+                if(evt.keyCode == 37 && x_sijainti > 0){
+                    console.log(pallo.style.left);
+                    pallo.style.left =  parseInt(pallo.style.left) - speed + 'px';
+                    
+                }
+                //nuoli oikealle liikuttaa palloa speed-muuttujan verran oikealle iin kauan kun pallon sijainti x-akselilla on pienempi tai yhtäsuuri kuin 400
+                if(evt.keyCode == 39 && x_sijainti <= 400){
+                    console.log(pallo.style.left);
+                    pallo.style.left =  parseInt(pallo.style.left) + speed + 'px';
+                   
+                }
+                //nuoli ylös liikuttaa palloa speed-muuttujan verran ylös iin kauan kun pallon sijainti y-akselilla on suurempi kuin 0
+                if(evt.keyCode == 38 && y_sijainti > 0){
+                    console.log(pallo.style.top);
+                    pallo.style.top =  parseInt(pallo.style.top) - speed + 'px';
+                }
+                //nuoli alas liikuttaa palloa speed-muuttujan verran alas niin kauan kun pallon sijainti y-akselilla on pienempi tai yhtäsuuri kuin 400
+                if(evt.keyCode == 40 && y_sijainti <= 400){
+                    console.log(pallo.style.top);
+                    pallo.style.top =  parseInt(pallo.style.top) + speed + 'px';
+                }
+                //välilyönti -> paluu vas. ylänurkkaan eli määritetään pallon lefttop-arvoiksi nolla
+                if(evt.keyCode == 32){
+                    console.log("alkuun");
+                    pallo.style.left = "0px";
+                    pallo.style.top = "0px";
+                }
+            }
+            //init-funktiota kutsutaan kun html-dokumentti ladataan
+            function init(){
+                pallo = document.getElementById("pallo"); 
+                //määritetään pallolle alkupositio
+                pallo.style.left = "0px";
+                pallo.style.top = "0px";
+                //lisätään eventListener, joka rekisteröi näppäinten painalluksia
+                window.addEventListener("keydown",pelaa);
+                //kutsutaan pelaa-funktio
+                pelaa();
+            }
+        
+        </script>
+    </body>
+</html>

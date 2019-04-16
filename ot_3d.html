@@ -1,0 +1,28 @@
+	
+	<!DOCTYPE html>
+	<html>
+        <head>
+            <meta charset="utf-8"/>
+            <title>Oppimistehtävä 3d</title>
+        </head>
+	<body>
+	<div id="tulostus"></div>
+	<script>
+        //luodaan olio ihminen
+        var ihminen = {
+            //määritellään oliolle ominaisuuksia
+            etunimi: "Leo",
+            sukunimi: "Vihantasalmi",
+            ika: 32,
+            //luodaan oliolle metodi, joka tulostaa olion tiedot lauseeksi
+            tulostaIhminen: function(){
+            return this.etunimi + " " + this.sukunimi+ " on " + this.ika + "-vuotias."
+        }
+        }
+        //kutsutaan olion metodia, joka tulostaa tiedot
+        console.log(ihminen.tulostaIhminen());
+        document.getElementById("tulostus").innerHTML = ihminen.tulostaIhminen();
+	</script>
+
+	</body>
+	</html>

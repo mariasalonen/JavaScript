@@ -1,0 +1,36 @@
+<!--Määritetään dokumentin tyypiksi html-->
+<!DOCTYPE html>
+<!--html-dokumentti alkaa-->
+<html>
+    <head>
+    <!--määritetään utf-8 -merkistö-->
+	<meta charset="utf-8"/>
+		<title>Oppimistehtävä 1b</title>
+	</head>
+    <!--varsinainen dokumentti tulee body-tunnisteiden väliin-->
+    <body>
+        <!--otsikko-->
+        <h1>Kirjoita lause</h1>
+        <!--kenttä johon käyttäjä syöttää lauseen-->
+        <input id="lause"/>
+        <!--nappi, johon liitetään tulostus-funktio-->
+        <button type="button" onclick="tulosta();">Tulosta</button>
+        <br/><br/>
+        Kirjoittamasi lause on:
+        <br/>
+        <!--diviin tulostetaan käyttäjän antama lause-->
+        <div id="tulostus"></div>
+        <!--skripti alkaa-->
+        <script>
+            //luodaan tulosta-niminen funktio, jota kutsutaan kun käyttäjä painaa nappia
+            function tulosta(){
+                //muuttuja "lause", jolle annetaan lomakkeen arvo
+                var lause = document.getElementById("lause").value;
+                //tulostetaan muuttuja lause diviin tulostus
+                document.getElementById("tulostus").innerHTML= lause; 
+            }
+        //skripti päättyy
+        </script>
+    </body>
+<!--html-dokumentti päättyy-->
+</html>

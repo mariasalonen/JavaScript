@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Oppimistehtävä 4a</title>
+        <style>
+            a{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <!--Linkkeihin lisätään onmouseover-toiminto, joka kutsuu funktiota kun hiiri viedään linkin päälle. Funktiolle viedään kuvan tiedostopolku -->
+        <a href="http://www.google.com" target="_blank" onmouseover="naytaKuva('kuvat/google.png');">Google</a><br/><br/>
+        <a href="http://www.wikipedia.com" target="_blank" onmouseover="naytaKuva('kuvat/wikipedia.png');">Wikipedia</a><br/><br/>
+        <a href="http://www.jamk.fi" target="_blank" onmouseover="naytaKuva('kuvat/jamk.png');">JAMK</a><br/><br/>
+        <!-- lisätään img-tunniste ilman scr:tä. Src eli kuvan lähde lisätään myöhemmin funktion avulla-->
+        <img width="300" id="kuva">
+        <script>
+            //funktio lisää tyhjän img:n sisällöksi funktiolle viedyn kuvan
+            function naytaKuva(kuva){
+                document.getElementById("kuva").src = kuva;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8"/>
+		<title>Oppimistehtävä 1c</title>
+        <!--määritellään laskurille tyylit-->
+        <style>
+            #content{
+                width: 350px;
+                float:left;
+                border: 1px solid black;
+                padding-top: 20px;
+                padding-right: 5px;
+                padding-left: 5px;
+                padding-bottom: 20px;
+                background-color: azure;
+            }
+        
+            input{
+                width: 75px;
+                float:right;
+            }
+            
+            #total{
+                float:right;
+            }
+
+        </style>
+	</head>
+    <body>
+        <h1>Tietokoneen pakettilaskuri</h1>
+        Tietokoneen komponenttien hinnat euroina:<br/><br/>
+        <div id="content">
+        <!--eri komponenttien hintojen syöttölaatikot-->
+        Emolevy:<input id="emolevy"/><br/><br/>
+        Prosessori:<input id="prosessori"/><br/><br/>
+        Muisti:<input id="muisti"/><br/><br/>
+        Kiintolevy:<input id="kiintolevy"/><br/><br/>
+        Kotelo:<input id="kotelo"/><br/><br/>
+        Näytönohjain:<input id="naytonohjain"/><br/><br/>
+        Virtalähde:<input id="virtalahde"/><br/><br/><br/>
+        <!--nappi, jota painamalla kutsutaan laske-funktio-->
+        <button type="button" onclick="laske();"> <b>Yhteensä:</b></button>
+        <div id="total"></div>
+        </div>
+        <!--skripti alkaa-->
+        <script>
+            //funktio, joka hakee input-kenttien arvot ja laskee ne yhteen
+            function laske(){
+                
+                //muutetaan input-kenttien arvot numeerisiksi ja annetaan niiden arvot muuttujille
+                var emo = Number(document.getElementById("emolevy").value);
+                var pros = Number(document.getElementById("prosessori").value);
+                var muis = Number(document.getElementById("muisti").value);
+                var kiin = Number(document.getElementById("kiintolevy").value);
+                var kot = Number(document.getElementById("kotelo").value);
+                var nayt = Number(document.getElementById("naytonohjain").value);
+                var virt = Number(document.getElementById("virtalahde").value);
+                
+                //alustetaan muuttuja, jonka arvo on kaikkien osien yhteenlaskettu summa
+                var summa = emo + pros + muis + kiin + kot + nayt + virt;
+                //tulostetaan summa div-elementtiin
+                document.getElementById("total").innerHTML = summa;
+
+            }
+
+        //skripti päättyy
+        </script>
+    </body>
+</html>
